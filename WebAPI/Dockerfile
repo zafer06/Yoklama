@@ -6,9 +6,9 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["WebAPI/WebAPI.csproj", "WebAPI/"]
-COPY ["Business/Business.csproj", "Business/"]
-COPY ["DataAccess/DataAccess.csproj", "DataAccess/"]
-COPY ["Entities/Entities.csproj", "Entities/"]
+COPY ["Yoklama/Business/Business.csproj", "Business/"]
+COPY ["Yoklama/DataAccess/DataAccess.csproj", "DataAccess/"]
+COPY ["Yoklama/Entities/Entities.csproj", "Entities/"]
 RUN dotnet restore "WebAPI/WebAPI.csproj"
 COPY . .
 WORKDIR "/src/WebAPI"
