@@ -13,12 +13,6 @@ RUN dotnet restore "WebAPI/WebAPI.csproj"
 COPY . .
 WORKDIR "/src/WebAPI"
 RUN dotnet build "WebAPI.csproj" -c Release -o /app/build
-WORKDIR "/src/Business"
-RUN dotnet build "Business.csproj" -c Release -o /app/build
-WORKDIR "/src/DataAccess"
-RUN dotnet build "DataAccess.csproj" -c Release -o /app/build
-WORKDIR "/src/Entities"
-RUN dotnet build "Entities.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "WebAPI.csproj" -c Release -o /app/publish
