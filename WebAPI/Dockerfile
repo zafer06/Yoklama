@@ -1,18 +1,19 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+FROM mcr.microsoft.com/dotnet/sdk:6.0
 WORKDIR /app
-
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["WebAPI/WebAPI.csproj", "WebAPI/"]
-COPY ["Yoklama/Business/Business.csproj", "Business/"]
-COPY ["Yoklama/DataAccess/DataAccess.csproj", "DataAccess/"]
-COPY ["Yoklama/Entities/Entities.csproj", "Entities/"]
-RUN dotnet restore "WebAPI/WebAPI.csproj"
 COPY . .
-WORKDIR "/src/WebAPI"
+RUN dotnet restore "Yoklama/WebAPI/WebAPI.csproj"
 RUN dotnet build "WebAPI.csproj" -c Release -o /app/build
+
+RUN dotnet restore "Yoklama/Entities/Entities.csproj"
+RUN dotnet build "Entities.csproj" -c Release -o /app/build
+
+RUN dotnet restore "Yoklama/DataAccess/DataAccess.csproj"
+RUN dotnet build "DataAccess.csproj" -c Release -o /app/build
+
+RUN dotnet restore "Yoklama/Business/Business.csproj"
+RUN dotnet build "Business.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "WebAPI.csproj" -c Release -o /app/publish
