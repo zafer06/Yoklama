@@ -16,7 +16,7 @@ namespace DataAccess.Concrete.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string conString = @"Data Source=ASEN\SQLEXPRESS;Initial Catalog=Yoklama;Trusted_Connection=True;TrustServerCertificate=True;";
+            string conString = @"Data Source=sql_server2023;Initial Catalog=Yoklama;Trusted_Connection=True;TrustServerCertificate=True;";
             optionsBuilder.UseSqlServer(conString);
         }
 
