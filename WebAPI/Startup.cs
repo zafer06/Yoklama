@@ -28,8 +28,8 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<WebAPIContext>(opt => opt.UseSqlServer(@"Data Source=sql_server2023;Initial Catalog=Yoklama;Trusted_Connection=True;TrustServerCertificate=True;"
-, opts => opts.MigrationsAssembly("DataAccess").MigrationsHistoryTable(HistoryRepository.DefaultTableName, "dbo")));
+            //services.AddDbContext<WebAPIContext>(opt => opt.UseSqlServer(@"Data Source=sql_server2023;Initial Catalog=Yoklama;Trusted_Connection=True;TrustServerCertificate=True;", opts => opts.MigrationsAssembly("DataAccess").MigrationsHistoryTable(HistoryRepository.DefaultTableName, "dbo")));
+            services.AddDbContext<WebAPIContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("YoklamaDb"), opts => opts.MigrationsAssembly("DataAccess").MigrationsHistoryTable(HistoryRepository.DefaultTableName, "dbo")));
             services.AddControllers();
             services.AddTransient<IUserDal, EfUserDal>();
             services.AddTransient<IUserService, UserService>();
