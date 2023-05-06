@@ -1,4 +1,6 @@
+using DataAccess.Concrete.Contexts;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -13,6 +15,7 @@ namespace WebAPI
     {
         public static void Main(string[] args)
         {
+            DbContextOptionsBuilder<WebAPIContext> options = new DbContextOptionsBuilder<WebAPIContext>();
             CreateHostBuilder(args).Build().Run();
         }
 
