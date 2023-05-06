@@ -15,7 +15,6 @@ namespace WebAPI
     {
         public static void Main(string[] args)
         {
-            DbContextOptionsBuilder<WebAPIContext> options = new DbContextOptionsBuilder<WebAPIContext>();
             CreateHostBuilder(args).Build().Run();
         }
 
