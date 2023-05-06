@@ -16,4 +16,4 @@ services:
       - ./data:/var/opt/mssql/data
     environment:
       ACCEPT_EULA: Y
-      SA_PASSWORD: Abc.123
+      SA_PASSWORD: Abc,,123
