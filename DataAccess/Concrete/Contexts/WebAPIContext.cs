@@ -18,8 +18,9 @@ namespace DataAccess.Concrete.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //string conString = @"Data Source=sql_server2023;Initial Catalog=Yoklama;Trusted_Connection=True;TrustServerCertificate=True;";
-            optionsBuilder.UseSqlServer(new ConfigurationBuilder().Build().GetConnectionString("YoklamaDb"));
+            string conString = @"Data Source=172.29.64.1,1401; User ID=sa; Password=Aa123456; Initial Catalog=Yoklama; Trusted_Connection=True; TrustServerCertificate=True; Persist Security Info=True; Integrated Security=False;";
+            optionsBuilder.UseSqlServer(conString);
+            //optionsBuilder.UseSqlServer(new ConfigurationBuilder().Build().GetConnectionString("YoklamaDb"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
